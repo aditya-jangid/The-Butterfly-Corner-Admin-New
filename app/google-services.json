@@ -1,0 +1,109 @@
+{
+  "project_info": {
+    "project_number": "681542443005",
+    "firebase_url": "https://butterfly-corner-3b40d.firebaseio.com",
+    "project_id": "butterfly-corner-3b40d",
+    "storage_bucket": "butterfly-corner-3b40d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681542443005:android:a999d79407dc9dacbf8394",
+        "android_client_info": {
+          "package_name": "com.tbg.thebutterflycorneradmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681542443005-mrnsb2f5vhta70giqcgppbs9eju7h9qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbg.thebutterflycorneradmin",
+            "certificate_hash": "17203478bbf2f1b80c8117622cf6a4721c9fb673"
+          }
+        },
+        {
+          "client_id": "681542443005-33a687e40cp68uia2gcb01bu35524nnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy5m7c2O-qYSVVBdCJXmF5LpwuOUNKuQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681542443005-33a687e40cp68uia2gcb01bu35524nnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681542443005:android:fe411df0c1f20a0cbf8394",
+        "android_client_info": {
+          "package_name": "com.tbg.www.thebutterflycorner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681542443005-tc9al0suqmgie220qdc6n2k2stenlkd3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbg.www.thebutterflycorner",
+            "certificate_hash": "c0aba30faa9a2910c734e3a9fb3e4135bcfdc5bc"
+          }
+        },
+        {
+          "client_id": "681542443005-4duaub0fjeg6ca1t1v7moqtft03cjanf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbg.www.thebutterflycorner",
+            "certificate_hash": "1b874fc41aeb1977858bf4a6a081ca5e17be11f2"
+          }
+        },
+        {
+          "client_id": "681542443005-dlebkpjjeetqkrur4tednkj82bg9c5n3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbg.www.thebutterflycorner",
+            "certificate_hash": "a891bdd4166112b9fd600b51ed53611cdaabf37f"
+          }
+        },
+        {
+          "client_id": "681542443005-o5oe4sls0f8b4enqmvpkjt4rjguqm778.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbg.www.thebutterflycorner",
+            "certificate_hash": "17203478bbf2f1b80c8117622cf6a4721c9fb673"
+          }
+        },
+        {
+          "client_id": "681542443005-33a687e40cp68uia2gcb01bu35524nnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy5m7c2O-qYSVVBdCJXmF5LpwuOUNKuQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681542443005-33a687e40cp68uia2gcb01bu35524nnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
