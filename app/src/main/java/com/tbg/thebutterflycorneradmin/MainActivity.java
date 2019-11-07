@@ -24,28 +24,47 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     //
 
-    Button button;
+    Button button,historyButton;
     FirebaseFirestore db;
     String docId;
+    Map<String,Object> coupon;
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         IntentResult scanResult=IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         JSONObject jsonObject = null;
+        String userId = null;
+        String userEmail=null;
+        String timeStamp=null;
+        String couponId=null;
         if(scanResult!=null){
             Log.i("GetContents",scanResult.getContents());
             try {
+
                 jsonObject=new JSONObject(scanResult.getContents());
+                couponId=jsonObject.getString("couponId");
+                userId=jsonObject.getString("userId");
+                userEmail=jsonObject.getString("userEmail");
+                Long tsLong = System.currentTimeMillis();
+                timeStamp = tsLong.toString();
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             try {
+                final String finalUserId = userId;
+                final String finalCouponId = couponId;
+                final String finalUserEmail = userEmail;
+                final String finalTimeStamp = timeStamp;
                 db.collection("coupons")
                         .whereEqualTo("couponId",jsonObject.get("couponId"))
                         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -63,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Log.d("Status", "DocumentSnapshot successfully updated!");
+                                                coupon = new HashMap<>();
+                                                coupon.put("userId", finalUserId);
+                                                coupon.put("couponId", finalCouponId);
+                                                coupon.put("userEmail", finalUserEmail);
+                                                coupon.put("timestamp", finalTimeStamp);
+                                                storeNewScannedCoupon(coupon);
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -81,11 +106,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void storeNewScannedCoupon(Map<String,Object> coupon){
+        db.collection("scannedCoupons")
+                .add(coupon)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("bc", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("bc", "Error adding document", e);
+                    }
+                });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         button = findViewById(R.id.button);
+        historyButton=findViewById(R.id.historyButton);
+
         db=FirebaseFirestore.getInstance();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +140,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,History.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
